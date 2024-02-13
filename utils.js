@@ -16,7 +16,6 @@ export function readDataFromFile() {
     }
 }
 
-// Запись данных в файл
 export function writeDataToFile(data) {
     fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 }
@@ -24,7 +23,7 @@ export function writeDataToFile(data) {
 export function getLastId() {
     const users = readDataFromFile();
     if (users.length === 0) {
-        return 0; // Если нет пользователей, возвращаем 0
+        return 0;
     }
     return users[users.length - 1].id;
 }
