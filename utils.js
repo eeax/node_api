@@ -1,11 +1,15 @@
 import fs from "fs";
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const dataFilePath = './users.json';
+const dataFilePath = resolve(__dirname, 'data.json');
 
 export function readDataFromFile() {
     try {
         const data = fs.readFileSync(dataFilePath);
-        return JSON.parse(data);
+        return JSON.parse(data.toString());
     } catch (error) {
         if (error.code === 'ENOENT') {
             return [];
